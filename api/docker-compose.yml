@@ -1,0 +1,25 @@
+version: '2.0.1'
+
+services:
+
+  db:
+    image: postgres:13.4
+    container_name: waf-db
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    command: postgres -c listen_addresses=*
+    ports:
+      - '3306:5432'
+
+  api:
+    image: 'vwaf/api:${API_VERSION}'
+    container_name: waf-api
+    environment:
+      DB_URL: host.docker.internal:3306
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '8080:8080'
