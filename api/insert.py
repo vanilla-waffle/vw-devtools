@@ -27,5 +27,5 @@ def insert_data(file_path, table_name):
         conn.close()
         print(f"Inserted data from {file_path} into {table_name} table")
 
-insert_data("users.csv", "users")
-insert_data("post.csv", "post")                                                               
+insert_data("data/users.csv", "users")
+insert_data("data/post.csv", "post")                                                               
