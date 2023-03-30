@@ -1,0 +1,9 @@
+{
+	"name": "vw-devtools",
+    "version": "1.0.0",
+    "description": "Requires an .env file to run",
+    "scripts": {
+	    "start": "docker-compose --env-file .env up -d"
+     },
+     "license": "ISC"
+}
