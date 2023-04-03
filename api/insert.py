@@ -10,22 +10,31 @@ DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
 DB_PASS = os.getenv("DB_PASSWORD")
 
-def insert_data(file_path, table_name):
-    conn = psycopg2.connect(
+def connect():
+    return psycopg2.connect(
         host=DB_HOST,
         port=DB_PORT,
         dbname=DB_NAME,
         user=DB_USER,
         password=DB_PASS
     )
-    cur = conn.cursor()
-    with open(file_path, "r") as f:
-        next(f)  # skip header row
-        cur.copy_from(f, table_name, sep=",")
-        conn.commit()
-        cur.close()
-        conn.close()
-        print(f"Inserted data from {file_path} into {table_name} table")
 
-insert_data("data/users.csv", "users")
-insert_data("data/post.csv", "post")                                                               
+def insert(file_path, table_name):
+    conn = connect()
+    with open(file_path, "r") as f:
+        print(f"Started insert operation into {table_name}")
+        sql = f.read()
+        with conn.cursor() as cur:
+            try:
+                cur.execute(sql)
+                conn.commit()
+            except psycopg2.Error as e:
+                print(f'Warning: {e}')
+                pass
+        print(f"Done")
+
+insert("data/vw_driver_licenses.sql", "vw_driver_licenses")
+insert("data/vw_users.sql", "vw_users")
+insert("data/vw_locations.sql", "vw_locations")
+insert("data/vw_vehicle_passport.sql", "vw_vehicle_passport")                                                       
+insert("data/vw_vehicles.sql", "vw_vehicles")
