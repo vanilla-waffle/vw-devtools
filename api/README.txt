@@ -6,8 +6,11 @@
 - Dependencies
 - pip install psycopg2 python-dotenv
 
-- Run
+- Run all services
 - npm start
 
-- Run
-- npm run mock (to add mock data to db)
+- Run specific service
+- npm start -- [db | api]
+
+- Populate database (requires python)
+- npm run mock
