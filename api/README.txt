@@ -4,7 +4,7 @@
 - node.js 14+
 
 - Dependencies
-- pip install psycopg2 dotenv
+- pip install psycopg2 python-dotenv
 
 - Run
 - npm start
