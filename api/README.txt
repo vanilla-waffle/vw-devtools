@@ -8,3 +8,6 @@
 
 - Run
 - npm start
+
+- Run
+- npm run mock (to add mock data to db)
