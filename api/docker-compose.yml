@@ -14,7 +14,7 @@ services:
       - '3306:5432'
 
   api:
-    image: 'vwaf/api:${API_VERSION}'
+    image: 'vwapi/oreo:${API_VERSION}'
     container_name: vw-api
     environment:
       DB_URL: host.docker.internal:3306
