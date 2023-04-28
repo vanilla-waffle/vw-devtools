@@ -1,4 +1,5 @@
 > Prerequisites:
+- Install 7z from tools/ folder
 - Run npm i
 - Set value for REPOSITORY in .env file. It must refer to vw-latex local repository folder
 
