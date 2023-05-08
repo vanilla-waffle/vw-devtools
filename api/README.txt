@@ -16,5 +16,5 @@
 - npm run mock
 
 - Credentials:
-- [admin] ssmoth0 12345
+- [admin] jgoodbody0 12345
 - [all users] <username> 12345

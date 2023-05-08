@@ -21,7 +21,7 @@ def connect():
 
 def insert(file_path, table_name):
     conn = connect()
-    with open(file_path, "r") as f:
+    with open(file_path, encoding="utf8") as f:
         print(f"Started insert operation into {table_name}")
         sql = f.read()
         with conn.cursor() as cur:
@@ -33,6 +33,7 @@ def insert(file_path, table_name):
                 pass
         print(f"Done")
 
+insert("data/vw_cities.sql", "vw_cities")
 insert("data/vw_driver_licenses.sql", "vw_driver_licenses")
 insert("data/vw_users.sql", "vw_users")
 insert("data/vw_locations.sql", "vw_locations")
